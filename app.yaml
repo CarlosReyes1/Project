@@ -1,0 +1,7 @@
+application: meme-1299
+runtime: go
+api_version: go1
+
+handlers:
+- url: /.*
+  script: _go_app
