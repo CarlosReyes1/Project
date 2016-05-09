@@ -8,8 +8,9 @@ import (
 
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
-	"google.golang.org/appengine/memcache"
 	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/memcache"
+	"google.golang.org/cloud/storage"
 
 	"github.com/nu7hatch/gouuid"
 	"golang.org/x/crypto/bcrypt"
@@ -22,14 +23,16 @@ type User struct {
 	Username string
 	Password string
 	Email    string
+	Photos   []string
 }
 
 func init() {
 	http.HandleFunc("/", root)
 	http.HandleFunc("/signin", signin)
 	http.HandleFunc("/register", register)
-	http.HandleFunc("/upload", upload)
 	http.HandleFunc("/main", mainz)
+	http.HandleFunc("/upload", upload)
+	http.HandleFunc("/uploadMore", uploadMore)
 	http.HandleFunc("/profile", profile)
 	http.HandleFunc("/signout", signout)
 
@@ -55,16 +58,20 @@ func register(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "register.html", nil)
 }
 
-func upload(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "upload.html", nil)
-}
-
 func mainz(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "main.html", nil)
 }
 
+func upload(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "upload.html", nil)
+}
+
+func uploadMore(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "uploadMore.html", nil)
+}
+
 func profile(w http.ResponseWriter, r *http.Request) {
-	i, _ := getSession(r)
+	i := getSession(r)
 	if len(i.Value) > 0 {
 		var u User
 		json.Unmarshal(i.Value, &u)
@@ -156,51 +163,46 @@ func createSession(w http.ResponseWriter, r *http.Request, u User) {
 	memcache.Set(c, &sd)
 }
 
-func getSession(r *http.Request) (*memcache.Item, error) {
+func getSession(r *http.Request) *memcache.Item {
 	o, err := r.Cookie("session")
 	if err != nil {
-		return &memcache.Item{}, err
+		return &memcache.Item{}
 	}
 	c := appengine.NewContext(r)
 	i, err := memcache.Get(c, o.Value)
 	if err != nil {
-		return &memcache.Item{}, err
+		return &memcache.Item{}
 	}
-	return i, nil
+	return i
 }
 
 func handler(res http.ResponseWriter, req *http.Request) {
 	ctx := appengine.NewContext(req)
+	client, err := storage.NewClient(ctx)
+
+	if err != nil {
+		log.Errorf(ctx, "error making new client")
+	}
+	defer client.Close()
 
 	if req.Method == "POST" {
 
 		mpf, hdr, err := req.FormFile("uploader")
 		if err != nil {
-			fuq = true
 			log.Errorf(ctx, "ERROR handler req.FormFile: ", err)
 			http.Error(res, "We were unable to upload your file\n", http.StatusInternalServerError)
 			http.Redirect(res, req, "/upload", 302)
-		} else{
-			http.Error(res, "Success\n", http.StatusInternalServerError)
-			http.Redirect(res, req, "/upload", 302)
-
 		}
 
 		defer mpf.Close()
 
 		_, err = uploadFile(req, mpf, hdr)
 		if err != nil {
-			fuq = false
 			log.Errorf(ctx, "ERROR handler uploadFile: ", err)
-			http.Error(res, "We were unable to accept your file\n" + err.Error(), http.StatusUnsupportedMediaType)
-			http.Redirect(res, req, "/main", 302)
-		} else{
+			http.Error(res, "We were unable to accept your file\n"+err.Error(), http.StatusUnsupportedMediaType)
 			http.Redirect(res, req, "/upload", 302)
-
 		}
-	} else {
-		http.Redirect(res, req, "/profile", 302)
 	}
 
-
+	http.Redirect(res, req, "/uploadMore", 302)
 }
