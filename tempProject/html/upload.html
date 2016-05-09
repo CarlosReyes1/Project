@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ek+Mukta">
+
+  <script src="js/upload.js"></script>
+
+  <title>Meme Center - Upload</title>
+</head>
+<body>
+<div id="container">
+  <header>
+    <a href="/">Meme Center</a>
+    <a href="/profile">Profile</a>
+      <a href="/signout">Logout</a>
+    <a href="/upload">Upload</a>
+  </header>
+
+    <main>
+        <div id ="lookup">
+            <form action="/handler" method="POST" enctype="multipart/form-data" onsubmit="return submitHandler()">
+                <h1> Hello: </h1>
+                <h1> Click on a photo to download!</h1></br>
+                <input type="file" name="uploader">
+                <input type="submit">
+
+                {{ if . }}
+                <h2>We were unable to accept your file</h2>
+                {{ end }}
+            </form>
+        </div>
+        <photolist>
+            {{range $photos :=  .User.Photos}}
+            <br>
+
+                <a download="{{$photos}}" href="https://storage.googleapis.com/meme-1299.appspot.com/{{$photos}}" title="{{$photos}}">
+                    <img alt="ImageName" src="https://storage.googleapis.com/meme-1299.appspot.com/{{$photos}}" width="50%" height="50%">
+                </a>
+
+                <br>
+
+                {{end}}
+                <br>
+                <br>
+                <br>
+        </photolist>
+    </main>
+
+  <div id="teamMembers">
+    <footer>
+      <h3>Here lies the techies names:</h3>
+      <ul>
+        <li>Nidhi Arora</li>
+        <li>Adrian Hernandez</li>
+        <li>Ernesto Perez</li>
+        <li>Carlos Reyes</li>
+        <li>Andres Felipe Vargas</li>
+      </ul>
+
+      <p>&copy;2016 Techies</p>
+    </footer>
+  </div>
+</div>
+</body>
+</html>

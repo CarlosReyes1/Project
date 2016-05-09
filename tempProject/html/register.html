@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ek+Mukta">
+  
+  <script src="js/register.js"></script>
+  
+  <title>Meme Center - Register</title>
+</head>
+<body>
+<div id="container">
+  <header>
+    <a href="/">Meme Center</a>
+    <a href="/signin">Sign In</a>
+    <a href="/register">Register</a>
+  </header>
+  
+  <form action="/create" method="post" onreset="resetHandler()" onsubmit="return submitHandler()">
+  
+  <main>
+    <h1>Username:</h1>
+    <div class="userBlock">
+      <input id="username" name="username" type="text" onkeyup="checkUsername()" />
+      <img id="username_img" src="" />
+    </div>
+    <h1>Password:</h1>
+    <div class="userBlock">
+      <input id="firstpass" name="password" type="password" onkeyup="checkPassword()" />
+      <img id="firstpass_img" src="" />
+    </div>
+    <h1>Reenter Password:</h1>
+    <div class="userBlock">
+      <input id="secondpass" type="password" onkeyup="checkPassword()" />
+      <img id="secondpass_img" src="" />
+    </div>
+    <h1>Email:</h1>
+    <div class="userBlock">
+      <input id="email" name="email" type="email" onkeyup="checkEmail()" />
+      <img id="email_img" src="" />
+    </div>
+  </main>
+  
+  <nav>
+    <ul>
+      <li><input type="submit" value="Register" /></li>
+      <li><input type="reset" /></li>
+    </ul>
+  </nav>
+  
+  </form>
+
+  <div id="teamMembers">
+    <footer>
+      <h3>Here lies the techies names:</h3>
+      <ul>
+        <li>Nidhi Arora</li>
+        <li>Adrian Hernandez</li>
+        <li>Ernesto Perez</li>
+        <li>Carlos Reyes</li>
+        <li>Andres Felipe Vargas</li>
+      </ul>
+
+      <p>&copy;2016 Techies</p>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
