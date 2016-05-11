@@ -126,6 +126,7 @@ aside img {
 /*Meme image*/
 #memeImg {
   display: flex;
+  flex-grow : 1;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;

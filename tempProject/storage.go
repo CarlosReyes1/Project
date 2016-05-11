@@ -6,8 +6,6 @@ import (
 	"io"
 )
 
-const gcsBucket = "meme-1299.appspot.com"
-
 func putFile(ctx context.Context, name string, rdr io.Reader) error {
 
 	client, err := storage.NewClient(ctx)
