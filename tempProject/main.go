@@ -209,27 +209,6 @@ func handler(res http.ResponseWriter, req *http.Request) {
       return
     }
   }
-
-  var myuser User
-
-  query := &storage.Query{
-    Prefix: myuser.Email + "/",
-  }
-  var bucketphotos []string
-
-  objs, err := client.Bucket(gcsBucket).List(ctx, query)
-
-  if err == nil {
-    for _, obj := range objs.Results {
-      bucketphotos = append(bucketphotos, obj.Name)
-    }
-
-    myuser.Photos = bucketphotos
-  } else {
-  log.Errorf(ctx, "ERROR in query_delimiter")
-
-  }
-
-  tpl.ExecuteTemplate(res, "uploadMore.html", myuser)
+  
   http.Redirect(res, req, "/uploadMore", 302)
 }
