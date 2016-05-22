@@ -1,0 +1,158 @@
+html, body, header, main, section, footer, div, a, ul, li, h1, h2 {
+    /* simple reset - resets browser's default styling */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*make links not colored*/
+a { text-decoration: none; color:white; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+html, body, #atf {
+    height: 100%;
+}
+
+
+#atf-img {
+	 background-image: url("MemeCenter2.jpg");
+	 background-color: midnightblue;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: cover;
+    /* grow the hero image to fill in unused space */
+	height:80%;
+   flex-grow: 2;
+}
+
+#atf {
+
+	  display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10vw;
+}
+
+
+.login-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 20vw;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #303B37;
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #303B37;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #4D55FF;
+
+}
+.login-block input#username {
+  background: #fff url("user.png") 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#username:focus {
+  background: #fff url("user.png") 20px bottom no-repeat;
+
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+  background: #fff url("lock.png") 20px top no-repeat;
+
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+  background: #fff url("lock.png") 20px bottom no-repeat;
+
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+
+.footer{
+  padding:2vh 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: mediumpurple;
+}
+
+.footeritem{
+  flex-wrap:nowrap;
+  transition: 0.3s ease;
+  color: darkseagreen;
+  border-top: 4px solid #3fa46a;
+  border-bottom: 4px solid #3fa46a;
+  margin: 0 20px;
+  padding:10px 100px;
+  font-size:150%;
+  color:white;
+}
+
+.footeritem:hover{
+
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+}

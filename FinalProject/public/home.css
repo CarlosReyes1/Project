@@ -1,0 +1,165 @@
+html, body, header, main, section, footer, div, a, ul, li, h1, h2 {
+    /* simple reset - resets browser's default styling */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*make links not colored*/
+a { text-decoration: none; color:white; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+html, body, #atf {
+    height: 100%;
+}
+
+
+
+#atf-img {
+	 background-image: url("MemeCenter2.jpg");
+	 background-color: midnightblue;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: cover;
+    /* grow the hero image to fill in unused space */
+	height:80%;
+   flex-grow: 2;
+}
+
+#atf {
+
+	  display: flex;
+    flex-direction: column;
+
+}
+
+
+
+#cta {
+
+    /* set the height of the cta container */
+    height: 10vw;
+
+    /* set the color of the cta container */
+    background-color: midnightblue;
+
+    /* center text and button containers */
+    /*      #cta-txt, #cta-btn */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 700px){
+  #cta{
+    background-color: black;
+  }
+}
+
+#btn {
+    height: 4vw;
+    width: 24vw;
+    /*border radius makes the button rounded*/
+    border-radius: 20px;
+    margin: 1vw;
+    background-color: mediumpurple;
+    font-size: 2vw;
+    /* sets color of text*/
+    color: rgba(0,0,0,.4);
+}
+
+#btn:hover {
+  color: mediumpurple;
+}
+
+
+.findsynbutton {
+    height: 4vw;
+    width: 24vw;
+    /*border radius makes the button rounded*/
+    border-radius: 20px;
+    margin: 1vw;
+    background-color: darkseagreen;
+    font-size: 2vw;
+    /* sets color of text*/
+    color: rgba(0,0,0,.4);
+}
+
+.findsynbutton:hover {
+  color: darkseagreen;
+}
+
+
+#entry {
+    align-items: center;
+    width: 50%;
+    font-size: 2vw;
+    text-align: center;
+}
+
+
+#lookup {
+	display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+	/*flex-grow:0;*/
+	background-color:mediumpurple;
+	height:90%;
+}
+
+
+
+photolist {
+	display: flex;
+  flex-flow: row wrap;
+  flex: grow;
+  width: 100%;
+  height: auto;
+  background-color:midnightblue;
+}
+
+
+names {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+	background-color: gray;
+  height:30%;
+  font-size:30px;
+
+}
+
+.footer{
+  padding:2vh 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: midnightblue;
+}
+
+.footeritem{
+  transition: 0.3s ease;
+  color: midnightblue;
+  border-top: 4px solid #3fa46a;
+  border-bottom: 4px solid #3fa46a;
+  margin: 0 20px;
+  padding:10px 100px;
+  font-size:150%;
+  color:white;
+}
+
+.footeritem:hover{
+
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+}

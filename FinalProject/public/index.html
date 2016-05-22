@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="public/main.css">
+</head>
+<body>
+
+<div id ="atf">
+	<div id ="atf-img"></div>
+
+	<main>
+	<section id="cta">
+
+            <input id="btn" type="submit" value="Find Synonyms Now!" onclick="window.location='#lookup';">
+            <div class = "footer">
+              <div class = "footeritem"><a href='#'>Home</a>     </div>
+              <div class = "footeritem"><a href='/register'>Register</a>     </div>
+              <div class = "footeritem"><a href='/login'>Login</a>     </div>
+              <div class = "footeritem"><a href='#'>Contact</a>     </div>
+              <div class = "footeritem"><a href='/state/?q=StateCheck'>State  </a> </div>
+
+
+            </div>
+
+	</section>
+	</main>
+</div>
+<div id ="lookup">
+<form method = "POST">
+ <h1> Enter the Word to Lookup!</h1></br>
+ <input id="entry" name="new-word" type="text" autocomplete="off">
+
+ <input id="btn" type="submit" value="Lookup Word">
+
+</form>
+
+</div>
+<center>
+<div class = "items">
+{{range $words :=  .Noun.Syn}}
+
+
+<div class ="item"> {{$words}} </div>
+
+
+
+{{end}}
+
+{{range $words :=  .Verb.Syn}}
+
+
+<div class ="item"> {{$words}} </div>
+
+
+
+{{end}}
+
+</center>
+</div>
+
+
+
+
+
+
+<names>
+ <svg height="130" width="500">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"
+      style="stop-color:rgb(255,255,0);stop-opacity:1" />
+      <stop offset="100%"
+      style="stop-color:rgb(255,0,0);stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+Sorry, your browser does not support inline SVG.
+</svg>
+  Nidhi Arora<br>
+  Adrian Hernandez<br>
+  Ernesto Perez<br>
+  Carlos Reyes<br>
+  Andres Felipe Vargas<br>
+
+</names>
+
+<div class = "footer">
+  <div class = "footeritem"><a href='#'>Home</a>     </div>
+  <div class = "footeritem">Register </div>
+  <div class = "footeritem">Login    </div>
+  <div class = "footeritem">Contact  </div>
+  <div class = "footeritem"><a href='/state/?q=StateCheck'>State  </a> </div>
+
+</div>
+
+
+
+</body>
+</html>
